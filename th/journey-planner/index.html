@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Singapore Journey Planner — Start Right Up</title>
+<meta name="description" content="รอเนื้อหา">
+<link rel="canonical" href="https://startrightup.com/th/journey-planner">
+<meta name="robots" content="noindex,nofollow">
+<link rel="alternate" hreflang="en" href="https://startrightup.com/journey-planner">
+<link rel="alternate" hreflang="th" href="https://startrightup.com/th/journey-planner">
+<link rel="alternate" hreflang="zh-Hans" href="https://startrightup.com/zh/journey-planner">
+<link rel="alternate" hreflang="x-default" href="https://startrightup.com/journey-planner">
+<link rel="icon" href="../../assets/logo.png">
+<meta property="og:title" content="Singapore Journey Planner — Start Right Up">
+<meta property="og:description" content="รอเนื้อหา">
+<meta property="og:url" content="https://startrightup.com/th/journey-planner">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>document.documentElement.className='js';</script>
+</head>
+<body>
+<a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+
+<div class="prail" id="prail" aria-hidden="true">
+  <div class="prail__track" id="prailTrack">
+    <span class="prail__line"></span>
+    <span class="prail__trail" id="prailTrail"></span>
+    <span class="prail__dest" id="prailDest"><span class="prail__ring"></span><span class="prail__dot"></span><span class="prail__sin">SIN</span></span>
+    <span class="prail__plane" id="prailPlane"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c.7 0 1.15.9 1.15 1.95v4.7l7.85 4.55v2.05l-7.85-2.25v4.6l2.3 1.65v1.7L12 20l-3.45 1.2v-1.7l2.3-1.65v-4.6L3 17.5v-2.05l7.85-4.55v-4.7C10.85 3.1 11.3 2.2 12 2.2z"/></svg></span>
+    <span class="prail__origin"></span>
+  </div>
+</div>
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="../../th/index.html"><img class="brand__logo" src="../../assets/logo.png" alt="" width="160" height="160"><span>Start <b>Right</b> Up</span></a>
+    <ul class="nav__links">
+      <li><a href="../../th/pre-on-arrival/index.html">ก่อนและเมื่อมาถึง</a></li>
+      <li><a href="../../th/settling-in/index.html">ตั้งหลักปักฐาน</a></li>
+      <li><a href="../../th/departure/index.html">การย้ายออก</a></li>
+      <li><a href="../../th/journey-planner/index.html">ปฏิทินวางแผนการย้ายสู่สิงคโปร์</a></li>
+      <li><a href="../../th/about/index.html">เกี่ยวกับเรา</a></li>
+      <li><a href="../../th/case-studies/index.html">เรื่องราวลูกค้า</a></li>
+      <li><a href="../../th/contact/index.html">ติดต่อเรา</a></li>
+    </ul>
+    <div class="nav__lang">
+      <a href="../../journey-planner/index.html" hreflang="en" aria-current="false">EN</a>
+      <a href="../../th/journey-planner/index.html" hreflang="th" aria-current="true">ไทย</a>
+      <a href="../../zh/journey-planner/index.html" hreflang="zh-Hans" aria-current="false">中文</a>
+    </div>
+    <a class="nav__cta" href="../../th/contact/index.html">ปรึกษาฟรี</a>
+    <button class="menu-btn" id="navToggle" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="เมนู" aria-hidden="true">
+  <div class="drawer__top">
+    <span class="brand" aria-hidden="true"><img class="brand__logo" src="../../assets/logo.png" alt="" width="160" height="160"><span>Start <b>Right</b> Up</span></span>
+    <button class="drawer__close" id="drawerClose" aria-label="ปิดเมนู">&times;</button>
+  </div>
+  <a href="../../th/pre-on-arrival/index.html">ก่อนและเมื่อมาถึง</a>
+  <a href="../../th/settling-in/index.html">ตั้งหลักปักฐาน</a>
+  <a href="../../th/departure/index.html">การย้ายออก</a>
+  <a href="../../th/journey-planner/index.html">ปฏิทินวางแผนการย้ายสู่สิงคโปร์</a>
+  <a href="../../th/about/index.html">เกี่ยวกับเรา</a>
+  <a href="../../th/case-studies/index.html">เรื่องราวลูกค้า</a>
+  <a href="../../th/contact/index.html">ติดต่อเรา</a>
+  <a class="btn btn--primary on-light" href="../../th/contact/index.html">นัดปรึกษาฟรี</a>
+  <div class="drawer__lang">
+    <a href="../../journey-planner/index.html" hreflang="en" aria-current="false">EN</a>
+    <a href="../../th/journey-planner/index.html" hreflang="th" aria-current="true">ไทย</a>
+    <a href="../../zh/journey-planner/index.html" hreflang="zh-Hans" aria-current="false">中文</a>
+  </div>
+</aside>
+
+<main id="main">
+
+  <!-- 1 · Hero -->
+  <section class="hero hero--stage">
+    <div class="wrap hero__in">
+      <h1>ปีการศึกษาในสิงคโปร์ของคุณ</h1>
+      <p class="hero__lead">วางแผนการย้ายมาสิงคโปร์ได้อย่างมั่นใจ ดูวันสำคัญของโรงเรียน วันหยุดราชการ และช่วงเวลาสำคัญในการวางแผน เพื่อช่วยให้คุณเลือกช่วงเวลาที่เหมาะสมที่สุดในการเดินทางมาถึงและเริ่มต้นการใช้ชีวิตในสิงคโปร์</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#milestones">ช่วงเวลาสำคัญในการเตรียมตัว</a>
+        <a class="btn btn--ghost" href="../../th/contact/index.html">นัดปรึกษาฟรี</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section jump card, over the hero seam -->
+  <div class="seam"><div class="panel"><div class="planner">
+    <nav class="jump" aria-label="หัวข้อในหน้านี้">
+      <a href="#how-to-use"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5M12 8h.01"/></svg></span><span class="jump__tx">วิธีใช้ปฏิทินนี้</span></a>
+      <a href="#milestones"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4.5"/><path d="M4 5.5h13l-2.5 3.5L17 12.5H4"/></svg></span><span class="jump__tx">ช่วงเวลาสำคัญในการเตรียมตัว</span></a>
+      <a href="#term-dates"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/></svg></span><span class="jump__tx">วันเปิด-ปิดภาคเรียน</span></a>
+      <a href="#exam-periods"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4V21a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 21V2.5Z"/><path d="M14.5 2.5V7H19"/><path d="m9.5 14 1.8 1.8 3.2-3.6"/></svg></span><span class="jump__tx">ช่วงสอบและวันหยุดราชการ</span></a>
+    </nav>
+  </div></div></div>
+
+  <!-- 2 · How to use this -->
+  <section class="section" id="how-to-use">
+    <div class="wrap">
+      <div class="svc">
+        <div class="svc__hd">
+          <span class="svc__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5M12 8h.01"/></svg></span>
+          <h2>วิธีใช้ปฏิทินนี้</h2>
+        </div>
+        <div class="svc__body"><p>ใช้ปฏิทินนี้เป็นแนวทางในการวางแผนย้ายมาสิงคโปร์ เปรียบเทียบภาคเรียน วันหยุด และวันสำคัญต่างๆ กับช่วงเวลาที่คุณต้องการเดินทางมาถึง โดยเผื่อเวลาให้เพียงพอสำหรับการสมัครเข้าโรงเรียน การจัดหาที่พัก และการตั้งหลักปักฐาน สำหรับครอบครัวที่มีบุตรหลาน เราแนะนำให้วางแผนโดยยึดตามปฏิทินการศึกษา มากกว่าการเลือกวันเดินทางตามความสะดวกเพียงอย่างเดียว เพื่อให้บุตรหลานของคุณสามารถปรับตัวเข้าสู่โรงเรียนได้อย่างราบรื่นที่สุด</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Milestones — the sequence carries information, so the numbers stay -->
+  <section class="section section--tint" id="milestones">
+    <div class="wrap">
+      <div class="sec-hd"><h2>ช่วงเวลาสำคัญในการเตรียมตัว</h2></div>
+      <div class="rail">
+        <div class="mile"><div class="mile__n" aria-hidden="true">1</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">2</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">3</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">4</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">5</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">6</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">7</div><p class="mile__tx">รอเนื้อหา</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">8</div><p class="mile__tx">รอเนื้อหา</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Term dates -->
+  <section class="section" id="term-dates">
+    <div class="wrap">
+      <div class="sec-hd"><h2>วันเปิด-ปิดภาคเรียน</h2></div>
+      <!-- PLACEHOLDER: term-date table. This is DATA, not copy — see the calendar
+           request in the content template. Ice supplies it or we quote for it. -->
+      <div class="survey-ph">วันเปิด-ปิดภาคเรียน (รอข้อมูล)</div>
+    </div>
+  </section>
+
+  <!-- 5 · Exam periods -->
+  <section class="section section--navy" id="exam-periods">
+    <div class="wrap">
+      <div class="sec-hd"><h2>ช่วงสอบและวันหยุดราชการ</h2></div>
+      <!-- PLACEHOLDER: exam-period table. Data. -->
+      <div class="survey-ph">ช่วงสอบ PSLE, O-Level, A-Level, IB และวันหยุดราชการสิงคโปร์ (รอข้อมูล)</div>
+      <p class="compare__hint">ตรวจสอบล่าสุด: ยังไม่เผยแพร่</p>
+    </div>
+  </section>
+
+  <!-- 6 · Closing -->
+  <section class="close">
+    <div class="wrap close__in">
+      <div><h2>ต้องการความช่วยเหลือในการวางแผน?</h2><p>ยังไม่แน่ใจว่าควรเดินทางมาถึงเมื่อไหร่? Start Right Up ช่วยจัดไทม์ไลน์เรื่องโรงเรียน ที่พัก และการย้ายถิ่นฐานให้สอดคล้องกัน เพื่อให้ทุกขั้นตอนการย้ายมาสิงคโปร์ของคุณเกิดขึ้นในจังหวะเวลาที่เหมาะสมที่สุด</p></div>
+      <a class="btn btn--primary on-light" href="../../th/contact/index.html">นัดปรึกษาฟรี</a>
+    </div>
+  </section>
+
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <span><b>Start Right Up</b> · รอเนื้อหา</span>
+    <span>enquiry@startrightup.com</span>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>
+

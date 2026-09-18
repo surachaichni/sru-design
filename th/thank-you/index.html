@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="th" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you message — Start Right Up</title>
+<meta name="description" content="รอเนื้อหา">
+<link rel="canonical" href="https://startrightup.com/th/thank-you">
+<meta name="robots" content="noindex,nofollow">
+<link rel="alternate" hreflang="en" href="https://startrightup.com/thank-you">
+<link rel="alternate" hreflang="th" href="https://startrightup.com/th/thank-you">
+<link rel="alternate" hreflang="zh-Hans" href="https://startrightup.com/zh/thank-you">
+<link rel="alternate" hreflang="x-default" href="https://startrightup.com/thank-you">
+<link rel="icon" href="../../assets/logo.png">
+<meta property="og:title" content="Thank you message — Start Right Up">
+<meta property="og:description" content="รอเนื้อหา">
+<meta property="og:url" content="https://startrightup.com/th/thank-you">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>document.documentElement.className='js';</script>
+</head>
+<body>
+<a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+
+<!-- Thank you. noindex — an indexed thank-you page corrupts the pixel conversion
+     count and the GA4 goal. No navigation menu. One file, four states by URL
+     parameter: ?source=enquiry | survey | lp | payment. Missing or unrecognised
+     falls back to the enquiry variant, never a blank state. -->
+<div class="lp-mark">
+  <a class="brand" href="../../th/index.html"><img class="brand__logo" src="../../assets/logo.png" alt="Start Right Up" width="160" height="160"><span>Start <b>Right</b> Up</span></a>
+</div>
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-hd"><h2 id="ty-heading" data-enquiry="ขอบคุณค่ะ เราได้รับคำตอบของคุณเรียบร้อยแล้ว" data-survey="ขอบคุณค่ะ เราได้รับคำตอบของคุณเรียบร้อยแล้ว" data-lp="ขอบคุณที่ติดต่อเราค่ะ" data-payment="เรียบร้อยแล้ว!">ขอบคุณค่ะ เราได้รับคำตอบของคุณเรียบร้อยแล้ว</h2></div>
+      <div class="prose">
+        <p id="ty-body" data-enquiry="คำตอบของคุณช่วยให้เราเข้าใจการย้าย ลำดับความสำคัญ และความช่วยเหลือที่คุณอาจต้องการได้ดียิ่งขึ้น ทีมงานของเราจะตรวจสอบข้อมูลและติดต่อกลับภายใน 1–2 วันทำการ" data-survey="คำตอบของคุณช่วยให้เราเข้าใจการย้าย ลำดับความสำคัญ และความช่วยเหลือที่คุณอาจต้องการได้ดียิ่งขึ้น ทีมงานของเราจะตรวจสอบข้อมูลและติดต่อกลับภายใน 1–2 วันทำการ" data-lp="เราได้รับข้อมูลของคุณแล้ว และจะทำการตรวจสอบคำขอของคุณในเร็วๆ นี้ ทีมงานของเราจะติดต่อกลับภายใน 1–2 วันทำการ เพื่อพูดคุยถึงขั้นตอนต่อไป" data-payment="เราได้รับการชำระเงินของคุณเรียบร้อยแล้ว และใบเสร็จจะถูกส่งไปยังอีเมลของคุณ ทีมงานของเราจะติดต่อกลับในเร็วๆ นี้ เพื่อยืนยันขั้นตอนถัดไป และเริ่มต้นเส้นทางกับ Start Right Up ของคุณ">คำตอบของคุณช่วยให้เราเข้าใจการย้าย ลำดับความสำคัญ และความช่วยเหลือที่คุณอาจต้องการได้ดียิ่งขึ้น ทีมงานของเราจะตรวจสอบข้อมูลและติดต่อกลับภายใน 1–2 วันทำการ</p>
+      </div>
+      <div class="hero__cta on-light">
+        <a class="btn btn--primary on-light" href="../../th/index.html">กลับไปหน้าแรก</a>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="lp-copyright">&copy; 2026 Start Right Up</div>
+<script>
+/* Four states, one file. The parameter carries the source, the path carries
+   the language. Both states are already painted from the enquiry variant, so a
+   script failure costs the variant, never the page. */
+(function(){try{
+  var src=(new URLSearchParams(location.search).get('source')||'enquiry').toLowerCase();
+  if(['enquiry','survey','lp','payment'].indexOf(src)<0)src='enquiry';
+  ['ty-heading','ty-body'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.dataset[src])el.textContent=el.dataset[src];
+  });
+}catch(e){}})();
+</script>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>
+

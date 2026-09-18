@@ -1,0 +1,481 @@
+/* ============================================================
+   Start Right Up — shared component styles
+   Direction 1 "The Planner", Blue Bar header. Client-approved 09 Sep 2026.
+   Loaded by all 45 addresses, byte-identical in every language.
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:var(--font);
+  font-size:var(--size-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{margin:0 0 .5em;line-height:var(--lh-tight);color:var(--navy);font-weight:600;text-wrap:balance}
+/* Tracking tightens as type grows, and relaxes as it shrinks. */
+.hero h1{letter-spacing:-.035em}
+.hero--stage h1,.founder__name{letter-spacing:-.025em}
+.sec-hd h2,.stages__hd h2,.svc__hd h2,.close h2{letter-spacing:-.022em}
+.stat b{letter-spacing:-.025em}
+h3{letter-spacing:-.008em}
+.ti__tx,.jump__tx,.field label{letter-spacing:.005em}
+p{margin:0 0 1rem;max-width:64ch}
+a{color:var(--action);text-underline-offset:.15em}
+ul{margin:0;padding:0;list-style:none}
+img{max-width:100%;display:block}
+
+/* Browser surfaces — these ship with defaults that belong to no design system */
+::selection{background:var(--navy);color:#fff}
+body{caret-color:var(--action);scrollbar-color:var(--line) var(--mist)}
+:focus-visible{outline:2px solid var(--navy);outline-offset:2px;border-radius:3px}
+.nav a:focus-visible,.nav button:focus-visible,.section--navy a:focus-visible{outline-color:#fff}
+
+.skip{position:absolute;left:1rem;top:-3rem;background:#fff;color:var(--navy);padding:.5rem 1rem;border-radius:6px;z-index:100;transition:top .15s}
+.skip:focus{top:1rem}
+
+html{scroll-behavior:smooth}
+/* Every jump target clears the sticky bar instead of hiding beneath it. */
+[id]{scroll-margin-top:5.5rem}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:inherit;font-weight:600;padding:.72em 1.4em;border-radius:10px;border:1.5px solid transparent;text-decoration:none;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.btn--primary{background:var(--action);color:#fff;border-color:var(--action)}
+.btn--primary:hover{background:var(--action-hover);border-color:var(--action-hover)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn--ghost:hover{border-color:#fff}
+.on-light .btn--primary,.btn--primary.on-light{background:var(--navy);border-color:var(--navy)}
+.on-light .btn--primary:hover,.btn--primary.on-light:hover{background:var(--navy-lift);border-color:var(--navy-lift)}
+.on-light .btn--ghost{color:var(--navy);border-color:var(--line)}
+.on-light .btn--ghost:hover{border-color:var(--navy)}
+.btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+
+/* Press feedback fires on pointer-down and is deliberately faster in than out:
+   the acknowledgement must feel instant, the release can relax. */
+.btn:active{transform:scale(.975);transition-duration:60ms}
+.nav__cta:active,.nav__links a:active,.nav__lang a:active,.drawer a:active,
+.fcard:active,.jump a:active,.nextstage a:active,.foot a:active{transform:scale(.98)}
+.nav__cta,.nav__links a,.nav__lang a,.drawer a,.jump a,.nextstage a,.foot a{
+  transition:transform 90ms var(--ease),color .18s,background .18s}
+.fcard:active{box-shadow:var(--sh-1)}
+.jump a:active .jump__ic{background:var(--navy);color:#fff}
+
+/* ---------- Navigation (Blue Bar) ---------- */
+.nav{background:var(--navy);position:sticky;top:0;z-index:40;
+  transition:box-shadow .25s var(--ease),background-color .25s var(--ease)}
+.nav[data-scrolled="true"]{
+  background:rgba(2,46,100,.86);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  backdrop-filter:blur(16px) saturate(180%);
+  box-shadow:0 6px 24px rgba(2,20,45,.22)}
+.nav__in{max-width:var(--wrap-nav);margin-inline:auto;padding:.9rem var(--gutter);display:flex;align-items:center;gap:1rem}
+.brand{color:#fff;font-weight:700;font-size:1.28rem;text-decoration:none;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.55rem}
+.brand__logo{height:1.55em;width:auto;background:#fff;border-radius:5px;display:block;flex:0 0 auto}
+.brand b{color:#fff}
+.nav__links{display:flex;gap:.75rem;margin-left:auto}
+/* nowrap on purpose: without it flex compresses a label onto two lines and the
+   bar looks like it fits while it does not. Overflow must be visible to be caught. */
+.nav__links a{color:var(--on-navy-muted);text-decoration:none;font-size:.8125rem;font-weight:500;white-space:nowrap}
+.nav__links li{flex:0 0 auto}
+.nav__links a:hover,.nav__links a[aria-current="page"]{color:#fff}
+.nav__lang{display:flex;gap:.55rem;align-items:center}
+.nav__lang a{color:var(--on-navy-muted);text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.04em;position:relative}
+/* A 44px target without a 44px box. Growing the link would grow the bar, and
+   the bar's height and its 1280 breakpoint are both measured values. */
+.nav__lang a::after{content:"";position:absolute;inset:-14px -7px}
+.nav__lang a:hover{color:#fff}
+.nav__lang a[aria-current="true"]{color:#fff;text-decoration:underline;text-underline-offset:.25em}
+.nav__cta{background:#fff;color:var(--navy);padding:.5em 1em;border-radius:9px;text-decoration:none;font-weight:600;font-size:.9rem;white-space:nowrap}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.4);border-radius:6px;width:44px;height:44px;color:#fff;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+
+/* 1280px. Re-measured 16 Sep with the language switcher actually in the markup
+   and the full "Singapore Journey Planner" label the 27/08 decision requires
+   ("Singapore stays in the display name").
+
+   The 14/08 decision set 1160 from a bar that had neither. With both present the
+   requirement is:  en 1238px · th 1171px · zh 993px  at link 0.8125rem / gap
+   0.75rem / bar gap 1rem. 1160 is not reachable — the tightest legible setting
+   tested still needs 1189px. 1280 leaves 42px of headroom.
+
+   Re-run `node scripts/measure-nav.mjs` on the deploy, where IBM Plex actually
+   loads; these numbers come from a fallback face. */
+@media(max-width:1279px){
+  .nav__links,.nav__cta,.nav__lang{display:none}
+  .menu-btn{display:flex;align-items:center;justify-content:center}
+}
+
+/* ---------- Drawer ---------- */
+.drawer{position:fixed;inset:0 0 0 auto;width:min(84vw,340px);background:#fff;z-index:60;
+  transform:translateX(100%);visibility:hidden;box-shadow:var(--sh-3);padding:1.5rem 1.4rem;
+  display:flex;flex-direction:column;gap:.1rem;overflow-y:auto;overscroll-behavior:contain;
+  touch-action:pan-y;will-change:transform}
+/* Fallback only: if the script never runs, the panel still opens and closes. */
+.no-js .drawer{transition:transform .28s var(--ease)}
+.drawer[data-open="true"]{transform:translateX(0);visibility:visible}
+.drawer a{color:var(--ink);text-decoration:none;font-weight:500;padding:.75rem 0;border-bottom:1px solid var(--line-soft)}
+.drawer .btn{margin-top:1rem;justify-content:center}
+.drawer__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.drawer__top .brand{color:var(--navy)}
+.drawer__top .brand b{color:var(--accent)}
+.drawer__close{background:none;border:none;font-size:1.7rem;line-height:1;color:var(--navy);cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:10px;margin-right:-.5rem}
+.drawer__close:active{background:var(--mist)}
+.drawer__lang{display:flex;gap:1rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line-soft)}
+.drawer__lang a{border:0;padding:.6rem .4rem;font-size:.9rem;font-weight:600;color:var(--muted);min-height:44px;display:inline-flex;align-items:center}
+.drawer__lang a[aria-current="true"]{color:var(--navy);text-decoration:underline;text-underline-offset:.25em}
+.scrim{position:fixed;inset:0;background:rgba(2,20,45,.4);z-index:55;opacity:0;visibility:hidden;transition:opacity .2s}
+.scrim[data-open="true"]{opacity:1;visibility:visible}
+
+/* ---------- Hero ---------- */
+.hero{background:linear-gradient(155deg,var(--navy),var(--navy-deep));color:#fff;position:relative;overflow:hidden;padding-block:5.5rem 11rem}
+.hero::before{content:"";position:absolute;left:-6%;top:-40%;width:52%;height:180%;background:radial-gradient(closest-side,rgba(255,255,255,.07),transparent);pointer-events:none}
+.hero__map{position:absolute;top:50%;left:53%;transform:translate(-50%,-50%);width:118%;height:auto;z-index:1;pointer-events:none}
+.hm__world{fill:rgba(255,255,255,.055);stroke:rgba(255,255,255,.14);stroke-width:.6;stroke-linejoin:round}
+.hm__pulse{fill:none;stroke:rgba(255,255,255,.5);stroke-width:1.4}
+.hm__pin-o{fill:#fff}
+.hm__pin-i{fill:var(--signal)}
+.hm__lbl{fill:rgba(255,255,255,.62);font:600 13px var(--font);letter-spacing:.06em}
+.hero__in{position:relative;z-index:2}
+.hero h1{color:#fff;font-size:clamp(2.9rem,1.5rem + 5.2vw,5.2rem);font-weight:600;max-width:18ch;margin-bottom:1.4rem}
+.hero__lead{color:var(--on-navy-muted);font-size:1.25rem;font-weight:300;max-width:54ch;margin-bottom:2rem}
+.hero__cta{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* Stage-page hero — shorter than the homepage, and deep enough at the foot for
+   the jump card to break the seam the way the credibility strip does on home. */
+.hero--stage{padding-block:4.5rem 9rem}
+.hero--stage h1{font-size:clamp(2.3rem,1.4rem + 3.2vw,3.6rem);max-width:20ch}
+.hero--short{padding-block:3.5rem 3.5rem}
+
+/* ---------- Section jump card ----------
+   Sits over the hero seam. Ice's requirement: clicking a service goes to that
+   section on the same page. This is the thing you click. */
+.jump{display:flex;align-items:stretch}
+.jump a{flex:1;display:flex;flex-direction:column;gap:.55rem;padding:.3rem 1.2rem;text-align:center;align-items:center;text-decoration:none;position:relative;color:var(--navy)}
+.jump a:not(:last-child)::after{content:"";position:absolute;right:0;top:8%;height:84%;width:1px;background:var(--line-soft)}
+.jump__ic{width:50px;height:50px;border-radius:14px;background:var(--mist);display:grid;place-items:center;color:var(--navy);flex:0 0 auto;transition:background .18s,color .18s}
+.jump__ic svg{width:25px;height:25px}
+.jump a:hover .jump__ic{background:var(--navy);color:#fff}
+.jump__tx{overflow-wrap:anywhere;font-size:.92rem;line-height:1.3;color:var(--navy);font-weight:600}
+
+/* ---------- Service section ----------
+   Left rail carries the icon and heading, body takes the measure. Uses the full
+   container instead of leaving the right-hand 40% empty. */
+.svc{display:grid;grid-template-columns:19rem minmax(0,1fr);gap:3.5rem;align-items:start}
+.svc__hd{position:sticky;top:6.5rem}
+.svc__ic{width:46px;height:46px;border-radius:13px;background:var(--mist);border:1px solid var(--line-soft);display:grid;place-items:center;color:var(--accent);margin-bottom:1.1rem}
+.section--tint .svc__ic{background:#fff}
+.section--navy .svc__ic{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+.svc__ic svg{width:24px;height:24px}
+.svc__hd h2{font-size:clamp(1.6rem,1.1rem + 1.6vw,2.1rem);color:var(--accent);margin:0}
+.section--navy .svc__hd h2{color:#fff}
+.svc__body p{font-size:1.02rem;color:var(--muted);max-width:68ch}
+.svc__body p:last-child{margin-bottom:0}
+.section--navy .svc__body p{color:var(--on-navy-muted)}
+
+/* An offer, not a paragraph. Used where a section takes money directly. */
+.offer{background:#fff;border:1px solid var(--line-soft);border-radius:16px;box-shadow:var(--sh-2);padding:2rem 2.2rem}
+.section--tint .offer{background:#fff}
+.offer p:last-of-type{margin-bottom:1.2rem}
+.offer__foot{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft);padding-top:1.2rem}
+
+@media(max-width:900px){
+  .hero--stage{padding-block:3.5rem 8rem}
+  .svc{grid-template-columns:minmax(0,1fr);gap:1.5rem}
+  .svc__hd{position:static}
+  .jump{flex-direction:column;align-items:stretch}
+  .jump a{flex-direction:row;justify-content:flex-start;gap:.8rem;padding:.85rem .4rem;text-align:left}
+  .jump a:not(:last-child){border-bottom:1px solid var(--line-soft)}
+  .jump a:not(:last-child)::after{display:none}
+  .offer{padding:1.5rem 1.4rem}
+}
+
+/* ---------- Credibility strip ---------- */
+.seam{background:var(--white);position:relative}
+.panel{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.planner{background:#fff;border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--sh-3);margin-top:-7rem;position:relative;z-index:3;padding:2.1rem 1rem}
+.trust{display:flex;align-items:stretch}
+.ti{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.7rem;padding:.3rem 1.2rem;position:relative}
+.ti:not(:last-child)::after{content:"";position:absolute;right:0;top:8%;height:84%;width:1px;background:var(--line-soft)}
+.ti__ic{width:50px;height:50px;border-radius:14px;background:var(--mist);display:grid;place-items:center;color:var(--navy);flex:0 0 auto}
+.ti__ic svg{width:25px;height:25px}
+.ti__tx{overflow-wrap:anywhere;font-size:.92rem;line-height:1.3;color:var(--navy);font-weight:600}
+
+/* ---------- Generic section ---------- */
+.section{padding-block:5rem}
+.section--tint{background:var(--mist)}
+.section--navy{background:var(--navy);color:#fff}
+.section--navy h2,.section--navy h3{color:#fff}
+.section--navy p{color:var(--on-navy-muted)}
+.sec-hd{max-width:48ch;margin-bottom:2.8rem}
+.sec-hd h2{font-size:clamp(1.9rem,1.2rem + 2.2vw,2.6rem);color:var(--accent)}
+.section--navy .sec-hd h2{color:#fff}
+.sec-hd p{color:var(--muted);font-size:1.1rem;font-weight:300}
+.section--navy .sec-hd p{color:var(--on-navy-muted)}
+
+/* ---------- People ---------- */
+.people{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;max-width:820px}
+.person{display:flex;gap:1.2rem;align-items:flex-start}
+.person__ph{width:92px;height:92px;border-radius:16px;background:#fff;border:1px dashed var(--line);flex:0 0 auto;display:grid;place-items:center;color:var(--muted);font-size:.68rem;text-align:center;padding:.4rem;line-height:1.3}
+.person h3{font-size:1.2rem;margin:0 0 .25rem}
+.person p{font-size:.92rem;color:var(--muted);margin:0}
+
+/* ---------- Stage cards ---------- */
+.stages{padding-block:5rem}
+.stages__hd{max-width:48ch;margin-bottom:2.8rem}
+.stages__hd h2{font-size:clamp(1.9rem,1.2rem + 2.2vw,2.6rem);color:var(--accent)}
+.stages__hd p{color:var(--muted);font-size:1.1rem;font-weight:300}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;align-items:stretch}
+.fcard{position:relative;background:#fff;border:1px solid var(--line-soft);border-radius:16px;padding:1.9rem 1.7rem 1.7rem;box-shadow:var(--sh-1);transition:transform .25s var(--ease),box-shadow .25s var(--ease);display:flex;flex-direction:column}
+.fcard:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.fcard__ic{width:46px;height:46px;border-radius:13px;background:var(--mist);border:1px solid var(--line-soft);display:grid;place-items:center;color:var(--accent);margin-bottom:1.1rem}
+.fcard__ic svg{width:24px;height:24px}
+.fcard h3{font-size:1.35rem;margin:0 0 .5rem}
+.fcard p{font-size:.92rem;color:var(--muted);margin:0 0 1.1rem;flex:1}
+.fcard a{font-weight:600;font-size:.9rem;color:var(--navy);text-decoration:none}
+.fcard a:hover{text-decoration:underline}
+
+/* ---------- Stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}
+.stat b{display:block;overflow-wrap:anywhere;font-size:clamp(2rem,1.3rem + 2vw,2.8rem);font-weight:700;color:#fff;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:.5rem;font-size:.9rem;color:var(--on-navy-muted)}
+
+/* ---------- Steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.step__n{width:44px;height:44px;border-radius:50%;background:var(--white);border:2px solid var(--navy);color:var(--navy);font-weight:700;display:grid;place-items:center;margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.section--tint .step__n{background:var(--mist)}
+.step h3{font-size:1.2rem;margin:0 0 .4rem}
+.step p{font-size:.9rem;color:var(--muted);margin:0}
+
+/* ---------- Comparison table ----------
+   Never collapses into stacked cards. The comparison is the point.
+   Horizontal scroller, first column pinned. internal-spec.md §6. */
+.compare__scroll{overflow-x:auto;border:1px solid var(--line-soft);border-radius:16px;
+  scrollbar-color:var(--line) var(--mist);overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.compare__scroll:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+/* The fade says "there is more this way" without a hard divider. */
+.compare__scroll[data-more="true"]{
+  -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent);
+  mask-image:linear-gradient(to right,#000 calc(100% - 44px),transparent)}
+.ctable{border-collapse:collapse;width:100%;min-width:660px;background:#fff}
+.ctable th,.ctable td{padding:1rem 1.4rem;border-bottom:1px solid var(--line-soft);font-size:.9rem;vertical-align:middle;text-align:left;position:relative}
+.ctable td:not(:first-child),.ctable thead th:not(:first-child){text-align:center}
+.ctable thead th{background:var(--navy);color:#fff;font-weight:600;position:sticky;top:0}
+.ctable th:first-child,.ctable td:first-child{position:sticky;left:0;background:#fff;z-index:2;box-shadow:1px 0 0 var(--line-soft);font-weight:600;color:var(--ink)}
+.ctable thead th:first-child{background:var(--navy);z-index:3}
+.ctable td.us{background:var(--cell-us);font-weight:600}
+.tick{color:var(--tick);font-weight:700}
+.cross{color:var(--muted)}
+.compare__hint{font-size:.82rem;color:var(--muted);margin-top:.8rem}
+
+/* ---------- Placeholders ---------- */
+.video-ph{aspect-ratio:16/9;border-radius:16px;background:#fff;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);text-align:center;padding:1.5rem}
+.section--tint .video-ph{background:var(--mist)}
+.survey-ph{border:1px dashed var(--line);border-radius:16px;background:#fff;padding:2.5rem;text-align:center;color:var(--muted)}
+.section--tint .survey-ph{background:var(--mist)}
+.map-ph{aspect-ratio:16/7;border-radius:16px;background:var(--mist);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);text-align:center;padding:1.5rem}
+
+/* ---------- Testimonials ---------- */
+.quotes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem}
+.quote{background:#fff;border:1px solid var(--line-soft);border-radius:16px;padding:1.6rem;box-shadow:var(--sh-1);display:flex;flex-direction:column;margin:0}
+.quote .mark{color:var(--accent);font-size:1.7rem;line-height:.5;font-weight:700;margin-bottom:.9rem}
+.quote p{font-size:.9rem;color:var(--ink);flex:1;margin:0 0 1rem}
+.quote cite{font-style:normal;font-weight:600;color:var(--navy);font-size:.88rem}
+
+/* ---------- Instagram ---------- */
+.ig-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.ig-ph{aspect-ratio:1;border-radius:12px;background:var(--mist);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.72rem}
+.section--tint .ig-ph{background:#fff}
+
+/* ---------- Prose block (stage page sections) ---------- */
+.prose{max-width:68ch}
+.prose p{font-size:1rem;color:var(--muted)}
+.prose p:last-child{margin-bottom:0}
+.meta-line{display:inline-flex;flex-wrap:wrap;gap:.6rem;align-items:center;font-size:.86rem;font-weight:600;color:var(--navy);background:var(--mist);border:1px solid var(--line-soft);border-radius:999px;padding:.45rem 1rem;margin-top:.6rem}
+.section--tint .meta-line{background:#fff}
+
+/* ---------- Founder block ----------
+   Portrait and bio side by side, sides alternating down the page so two
+   founders do not read as two identical cards. */
+.founder{display:grid;grid-template-columns:22rem minmax(0,1fr);gap:3.5rem;align-items:start}
+.founder--flip{grid-template-columns:minmax(0,1fr) 22rem}
+.founder--flip .founder__ph{order:2}
+.founder__ph{aspect-ratio:5/6;border-radius:18px;background:var(--mist);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.8rem;text-align:center;padding:1rem;line-height:1.4;box-shadow:var(--sh-1)}
+.section--tint .founder__ph{background:#fff}
+.founder__name{font-size:clamp(1.7rem,1.2rem + 1.6vw,2.2rem);color:var(--accent);margin:0 0 .3rem}
+.founder__role{font-size:1rem;font-weight:600;color:var(--navy);margin:0 0 1.4rem}
+.founder__body p{font-size:1.02rem;color:var(--muted);max-width:68ch}
+.founder__body p:last-child{margin-bottom:0}
+
+/* ---------- Narrative lead ----------
+   The story section. One oversized opening line, then the body at a real
+   reading measure. Emphasis from size, never from a gradient or an eyebrow. */
+.narrative{max-width:72ch}
+.narrative p:first-of-type{font-size:clamp(1.2rem,1rem + .7vw,1.45rem);font-weight:300;line-height:1.5;color:var(--ink)}
+.narrative p{font-size:1.02rem;color:var(--muted)}
+.narrative p:last-child{margin-bottom:0}
+
+/* ---------- Pull statement ----------
+   Mission. A short line that earns the whole band. */
+.pull{font-size:clamp(1.5rem,1.1rem + 1.8vw,2.3rem);font-weight:300;line-height:1.35;letter-spacing:-.02em;max-width:24ch;margin:0}
+.section--navy .pull{color:#fff}
+
+/* ---------- Case study ---------- */
+.story{display:grid;grid-template-columns:24rem minmax(0,1fr);gap:3rem;align-items:start;padding-block:3rem;border-top:1px solid var(--line-soft)}
+.story:first-of-type{border-top:0;padding-top:0}
+.story--flip{grid-template-columns:minmax(0,1fr) 24rem}
+.story--flip .story__ph{order:2}
+.story__ph{aspect-ratio:3/2;border-radius:16px;background:var(--mist);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.8rem;text-align:center;padding:1rem}
+.section--tint .story__ph{background:#fff}
+.story h3{font-size:1.5rem;margin:0 0 .8rem;color:var(--navy)}
+.story p{font-size:1rem;color:var(--muted);max-width:68ch;margin:0}
+
+/* ---------- Milestone timeline ----------
+   Eight steps down one rail. The sequence carries information — a parent reads
+   it against their own dates — so the numbers stay. */
+.rail{display:grid;gap:0;max-width:64rem}
+.mile{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:1.4rem;padding-block:1.4rem;position:relative}
+.mile::before{content:"";position:absolute;left:1.72rem;top:0;bottom:0;width:2px;background:var(--line-soft)}
+.mile:first-child::before{top:50%}
+.mile:last-child::before{bottom:50%}
+.mile__n{width:3.5rem;height:3.5rem;border-radius:50%;background:#fff;border:2px solid var(--navy);color:var(--navy);font-weight:700;display:grid;place-items:center;position:relative;z-index:1;font-variant-numeric:tabular-nums}
+.section--tint .mile__n{background:var(--mist)}
+.mile__tx{align-self:center;font-size:1rem;color:var(--muted);max-width:60ch;margin:0}
+
+/* ---------- Next-stage link ---------- */
+.nextstage{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding-top:1.8rem;margin-top:3rem}
+.nextstage span{color:var(--muted);font-size:.95rem}
+.nextstage a{font-weight:600;color:var(--navy);text-decoration:none}
+.nextstage a:hover{text-decoration:underline}
+
+/* ---------- Form ---------- */
+.form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.1rem;max-width:720px}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field--full{grid-column:1/-1}
+.field label{font-size:.85rem;font-weight:600;color:var(--navy)}
+.field input,.field select,.field textarea{font:inherit;font-size:.95rem;padding:.7rem .85rem;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--action);outline-offset:1px;border-color:var(--action)}
+.field textarea{min-height:120px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);opacity:1}
+.field__hint{font-size:.78rem;color:var(--muted)}
+.field__err{font-size:.78rem;color:var(--accent);font-weight:600;min-height:1.1em}
+.field[data-invalid="true"] input,.field[data-invalid="true"] select,.field[data-invalid="true"] textarea{
+  border-color:var(--accent);box-shadow:0 0 0 3px rgba(161,28,24,.1)}
+.field input,.field select,.field textarea{transition:border-color .15s,box-shadow .15s}
+.tel-row{display:flex;gap:.5rem}
+.tel-row select{flex:0 0 7.5rem}
+
+/* ---------- Closing ---------- */
+.close{background:var(--mist);border-top:1px solid var(--line-soft)}
+.close__in{padding-block:4rem;display:grid;grid-template-columns:minmax(0,1.5fr) auto;gap:2rem;align-items:center}
+.close h2{font-size:clamp(1.7rem,1.1rem + 2vw,2.4rem);margin:0 0 .5rem;color:var(--accent)}
+.close p{color:var(--muted);margin:0;max-width:52ch}
+
+/* ---------- Footer ---------- */
+.foot{background:var(--navy);color:var(--on-navy-muted);padding:2.6rem 0;font-size:.9rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.foot b{color:#fff}
+.foot a{color:var(--on-navy-muted);text-decoration:none}
+.foot a:hover{color:#fff}
+
+/* ---------- Landing page chrome (no nav, no footer) ---------- */
+.lp-mark{background:var(--navy);padding:1rem var(--gutter);display:flex;justify-content:center}
+.lp-copyright{background:var(--navy);color:var(--on-navy-muted);text-align:center;font-size:.82rem;padding:1.5rem var(--gutter)}
+.lp-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem}
+.lp-benefit h3{font-size:1.15rem;margin:0 0 .45rem}
+.lp-benefit p{font-size:.92rem;color:var(--muted);margin:0}
+.lp-proof{background:var(--mist);border:1px solid var(--line-soft);border-radius:16px;padding:2rem;max-width:68ch}
+.lp-proof p{margin:0;color:var(--ink)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1160px){
+  .trust{flex-direction:column;align-items:stretch}
+  .ti{flex-direction:row;justify-content:flex-start;gap:.8rem;padding:.85rem .4rem;text-align:left}
+  .ti:not(:last-child){border-bottom:1px solid var(--line-soft)}
+  .ti:not(:last-child)::after{display:none}
+}
+@media(max-width:900px){
+  .hero{padding-block:3.5rem 9rem}
+  .hero__map{width:235%;left:82%;top:17%;transform:translate(-78.8%,-49.2%)}
+  .hm__world{fill:rgba(255,255,255,.045);stroke:rgba(255,255,255,.1)}
+  .hm__lbl{display:none}
+  .planner{margin-top:-6rem}
+  .flow,.lp-benefits{grid-template-columns:minmax(0,1fr);gap:1.4rem}
+  .people{grid-template-columns:minmax(0,1fr)}
+  .stats,.steps{grid-template-columns:1fr 1fr;gap:2rem}
+  .quotes{grid-auto-flow:column;grid-auto-columns:80%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem}
+  .quote{scroll-snap-align:start}
+  .ig-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .close__in{grid-template-columns:minmax(0,1fr);gap:1.4rem}
+  .form{grid-template-columns:minmax(0,1fr)}
+  .founder,.founder--flip,.story,.story--flip{grid-template-columns:minmax(0,1fr);gap:1.5rem}
+  .founder--flip .founder__ph,.story--flip .story__ph{order:0}
+  .founder__ph{max-width:16rem}
+  .mile{grid-template-columns:2.8rem 1fr;gap:1rem}
+  .mile::before{left:1.35rem}
+  .mile__n{width:2.8rem;height:2.8rem;font-size:.9rem}
+}
+@media(max-width:560px){.stats,.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Journey rail ----------
+   Single origin → Singapore. One dot. Vertical right (desktop),
+   horizontal bottom (phone). Scroll-linked and eased. */
+.prail{position:fixed;z-index:30;pointer-events:none;top:0;right:14px;bottom:0;width:44px}
+.prail__track{position:absolute;top:104px;bottom:72px;left:50%;transform:translateX(-50%);width:2px}
+.prail__line{position:absolute;inset:0;background:repeating-linear-gradient(to top,rgba(120,132,156,.55) 0 2px,transparent 2px 8px)}
+.prail__trail{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--signal);box-shadow:0 0 8px rgba(205,4,2,.5);border-radius:2px}
+.prail__dest{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:24px;height:24px}
+.prail__ring{position:absolute;left:50%;top:50%;width:18px;height:18px;border-radius:50%;border:2.5px solid var(--signal);transform:translate(-50%,-50%) scale(.6);opacity:0;pointer-events:none}
+.prail__dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(2,46,100,.25);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.prail__dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal)}
+.prail__sin{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);font-size:.6rem;font-weight:700;letter-spacing:.06em;color:var(--navy);background:#fff;border:1px solid var(--line-soft);border-radius:999px;padding:2px 7px;box-shadow:0 2px 6px rgba(2,46,100,.15);white-space:nowrap}
+.prail__dest.arrived .prail__dot{transform:translate(-50%,-50%) scale(1.45)}
+.prail__dest.arrived .prail__ring{animation:prailping 1.4s ease-out infinite}
+@keyframes prailping{0%{transform:translate(-50%,-50%) scale(.6);opacity:.85}100%{transform:translate(-50%,-50%) scale(3.4);opacity:0}}
+.prail__origin{position:absolute;bottom:0;left:50%;transform:translate(-50%,50%);width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.prail__plane{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(2,46,100,.28);border:1px solid var(--line-soft);display:grid;place-items:center;will-change:bottom,left}
+.prail__plane svg{width:16px;height:16px;color:var(--navy);display:block}
+@media(max-width:820px){
+  .prail{top:auto;right:0;left:0;bottom:0;width:auto;height:54px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-top:1px solid var(--line-soft)}
+  .prail__track{top:50%;bottom:auto;left:52px;right:52px;transform:translateY(-50%);width:auto;height:2px}
+  .prail__line{background:repeating-linear-gradient(to right,rgba(120,132,156,.55) 0 2px,transparent 2px 8px)}
+  .prail__trail{top:0;bottom:0;left:0;right:auto;width:0;height:2px}
+  .prail__dest{top:50%;left:auto;right:0;transform:translate(50%,-50%)}
+  .prail__sin{right:auto;left:50%;top:auto;bottom:calc(100% + 7px);transform:translateX(-50%)}
+  .prail__origin{bottom:auto;top:50%;left:0;transform:translate(-50%,-50%)}
+  .prail__plane{top:50%;bottom:auto;left:0;transform:translate(-50%,-50%);width:32px;height:32px}
+  .prail__plane svg{transform:rotate(90deg)}
+  body{padding-bottom:54px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .prail__plane,.prail__trail,.prail__dot{transition:none}
+  .prail__dest.arrived .prail__ring{animation:none}
+  .fcard{transition:none}
+  .fcard:hover{transform:none;box-shadow:var(--sh-2)}
+  /* Presses still acknowledge — they are feedback, not travel. */
+  .btn:active,.nav__cta:active,.nav__links a:active,.nav__lang a:active,
+  .drawer a:active,.fcard:active,.jump a:active,.nextstage a:active,.foot a:active{transform:none;opacity:.72}
+  .drawer,.scrim{transition:opacity .2s ease}
+}
+
+/* Translucency is a preference, not a given. Frost it solid rather than
+   dropping the layer, so hierarchy survives. */
+@media(prefers-reduced-transparency:reduce){
+  .nav[data-scrolled="true"]{background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .prail{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+
+/* More contrast means defined edges, not just darker text. */
+@media(prefers-contrast:more){
+  :root{--muted:#3C4761;--line:#8A94A6;--line-soft:#B8C0CE;--on-navy-muted:#DCE6F5}
+  .fcard,.quote,.offer,.planner,.compare__scroll{border-color:var(--line)}
+  .btn--ghost{border-color:currentColor}
+  .nav[data-scrolled="true"]{background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none}
+  :focus-visible{outline-width:3px}
+}

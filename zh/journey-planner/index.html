@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Singapore Journey Planner — Start Right Up</title>
+<meta name="description" content="待补充文案">
+<link rel="canonical" href="https://startrightup.com/zh/journey-planner">
+<meta name="robots" content="noindex,nofollow">
+<link rel="alternate" hreflang="en" href="https://startrightup.com/journey-planner">
+<link rel="alternate" hreflang="th" href="https://startrightup.com/th/journey-planner">
+<link rel="alternate" hreflang="zh-Hans" href="https://startrightup.com/zh/journey-planner">
+<link rel="alternate" hreflang="x-default" href="https://startrightup.com/journey-planner">
+<link rel="icon" href="../../assets/logo.png">
+<meta property="og:title" content="Singapore Journey Planner — Start Right Up">
+<meta property="og:description" content="待补充文案">
+<meta property="og:url" content="https://startrightup.com/zh/journey-planner">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../assets/fonts-sc.css">
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>document.documentElement.className='js';</script>
+</head>
+<body>
+<a class="skip" href="#main">跳至主要内容</a>
+
+<div class="prail" id="prail" aria-hidden="true">
+  <div class="prail__track" id="prailTrack">
+    <span class="prail__line"></span>
+    <span class="prail__trail" id="prailTrail"></span>
+    <span class="prail__dest" id="prailDest"><span class="prail__ring"></span><span class="prail__dot"></span><span class="prail__sin">SIN</span></span>
+    <span class="prail__plane" id="prailPlane"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c.7 0 1.15.9 1.15 1.95v4.7l7.85 4.55v2.05l-7.85-2.25v4.6l2.3 1.65v1.7L12 20l-3.45 1.2v-1.7l2.3-1.65v-4.6L3 17.5v-2.05l7.85-4.55v-4.7C10.85 3.1 11.3 2.2 12 2.2z"/></svg></span>
+    <span class="prail__origin"></span>
+  </div>
+</div>
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="../../zh/index.html"><img class="brand__logo" src="../../assets/logo.png" alt="" width="160" height="160"><span>Start <b>Right</b> Up</span></a>
+    <ul class="nav__links">
+      <li><a href="../../zh/pre-on-arrival/index.html">抵达前及抵达</a></li>
+      <li><a href="../../zh/settling-in/index.html">安居新加坡</a></li>
+      <li><a href="../../zh/departure/index.html">离境支持</a></li>
+      <li><a href="../../zh/journey-planner/index.html">新加坡行程规划</a></li>
+      <li><a href="../../zh/about/index.html">关于我们</a></li>
+      <li><a href="../../zh/case-studies/index.html">客户案例</a></li>
+      <li><a href="../../zh/contact/index.html">联系我们</a></li>
+    </ul>
+    <div class="nav__lang">
+      <a href="../../journey-planner/index.html" hreflang="en" aria-current="false">EN</a>
+      <a href="../../th/journey-planner/index.html" hreflang="th" aria-current="false">ไทย</a>
+      <a href="../../zh/journey-planner/index.html" hreflang="zh-Hans" aria-current="true">中文</a>
+    </div>
+    <a class="nav__cta" href="../../zh/contact/index.html">免费咨询</a>
+    <button class="menu-btn" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="菜单" aria-hidden="true">
+  <div class="drawer__top">
+    <span class="brand" aria-hidden="true"><img class="brand__logo" src="../../assets/logo.png" alt="" width="160" height="160"><span>Start <b>Right</b> Up</span></span>
+    <button class="drawer__close" id="drawerClose" aria-label="关闭菜单">&times;</button>
+  </div>
+  <a href="../../zh/pre-on-arrival/index.html">抵达前及抵达</a>
+  <a href="../../zh/settling-in/index.html">安居新加坡</a>
+  <a href="../../zh/departure/index.html">离境支持</a>
+  <a href="../../zh/journey-planner/index.html">新加坡行程规划</a>
+  <a href="../../zh/about/index.html">关于我们</a>
+  <a href="../../zh/case-studies/index.html">客户案例</a>
+  <a href="../../zh/contact/index.html">联系我们</a>
+  <a class="btn btn--primary on-light" href="../../zh/contact/index.html">预约免费咨询</a>
+  <div class="drawer__lang">
+    <a href="../../journey-planner/index.html" hreflang="en" aria-current="false">EN</a>
+    <a href="../../th/journey-planner/index.html" hreflang="th" aria-current="false">ไทย</a>
+    <a href="../../zh/journey-planner/index.html" hreflang="zh-Hans" aria-current="true">中文</a>
+  </div>
+</aside>
+
+<main id="main">
+
+  <!-- 1 · Hero -->
+  <section class="hero hero--stage">
+    <div class="wrap hero__in">
+      <h1>您的新加坡学年</h1>
+      <p class="hero__lead">Plan your move to Singapore with confidence. See key school dates, public holidays and planning milestones to help you choose the right time to arrive and settle in.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#milestones">准备里程碑</a>
+        <a class="btn btn--ghost" href="../../zh/contact/index.html">预约免费咨询</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section jump card, over the hero seam -->
+  <div class="seam"><div class="panel"><div class="planner">
+    <nav class="jump" aria-label="本页内容">
+      <a href="#how-to-use"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5M12 8h.01"/></svg></span><span class="jump__tx">如何使用</span></a>
+      <a href="#milestones"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4.5"/><path d="M4 5.5h13l-2.5 3.5L17 12.5H4"/></svg></span><span class="jump__tx">准备里程碑</span></a>
+      <a href="#term-dates"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/></svg></span><span class="jump__tx">学期日期</span></a>
+      <a href="#exam-periods"><span class="jump__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4V21a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 21V2.5Z"/><path d="M14.5 2.5V7H19"/><path d="m9.5 14 1.8 1.8 3.2-3.6"/></svg></span><span class="jump__tx">考试期间与公共假期</span></a>
+    </nav>
+  </div></div></div>
+
+  <!-- 2 · How to use this -->
+  <section class="section" id="how-to-use">
+    <div class="wrap">
+      <div class="svc">
+        <div class="svc__hd">
+          <span class="svc__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5M12 8h.01"/></svg></span>
+          <h2>如何使用</h2>
+        </div>
+        <div class="svc__body"><p>Use this calendar as a planning guide for your move to Singapore. Compare school terms, holidays and key dates against your preferred arrival timeline, allowing enough time for school applications, housing arrangements and settling in. For families, we recommend planning around the academic calendar rather than simply choosing a flight date, so your child can transition into school as smoothly as possible.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Milestones — the sequence carries information, so the numbers stay -->
+  <section class="section section--tint" id="milestones">
+    <div class="wrap">
+      <div class="sec-hd"><h2>准备里程碑</h2></div>
+      <div class="rail">
+        <div class="mile"><div class="mile__n" aria-hidden="true">1</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">2</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">3</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">4</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">5</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">6</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">7</div><p class="mile__tx">待补充文案</p></div>
+        <div class="mile"><div class="mile__n" aria-hidden="true">8</div><p class="mile__tx">待补充文案</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Term dates -->
+  <section class="section" id="term-dates">
+    <div class="wrap">
+      <div class="sec-hd"><h2>学期日期</h2></div>
+      <!-- PLACEHOLDER: term-date table. This is DATA, not copy — see the calendar
+           request in the content template. Ice supplies it or we quote for it. -->
+      <div class="survey-ph">学期日期（待提供）</div>
+    </div>
+  </section>
+
+  <!-- 5 · Exam periods -->
+  <section class="section section--navy" id="exam-periods">
+    <div class="wrap">
+      <div class="sec-hd"><h2>考试期间与公共假期</h2></div>
+      <!-- PLACEHOLDER: exam-period table. Data. -->
+      <div class="survey-ph">PSLE、O-Level、A-Level、IB 考试期间及新加坡公共假期（待提供）</div>
+      <p class="compare__hint">最后核对：尚未发布</p>
+    </div>
+  </section>
+
+  <!-- 6 · Closing -->
+  <section class="close">
+    <div class="wrap close__in">
+      <div><h2>需要规划协助吗？</h2><p>Not sure when to arrive? Start Right Up can help align your school, housing and relocation timeline, so every step of your move to Singapore happens at the right time.</p></div>
+      <a class="btn btn--primary on-light" href="../../zh/contact/index.html">预约免费咨询</a>
+    </div>
+  </section>
+
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <span><b>Start Right Up</b> · 待补充文案</span>
+    <span>enquiry@startrightup.com</span>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>
+
