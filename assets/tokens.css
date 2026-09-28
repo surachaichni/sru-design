@@ -36,6 +36,29 @@
   --lh-body:1.6;           /* Latin. Overridden per script below. */
   --lh-tight:1.05;
 
+  /* Type roles. Named for the job, not the value: the call site asks for a
+     role and the scale decides the size. Before this there were six sizes
+     between .86rem and 1.02rem doing five different jobs, which is why the
+     page read as flat — nothing was separated enough to rank. */
+  --fs-display:clamp(2.9rem,1.5rem + 5.2vw,5.2rem);
+  --fs-h1:clamp(2.3rem,1.4rem + 3.2vw,3.6rem);
+  --fs-h2:clamp(1.9rem,1.2rem + 2.2vw,2.6rem);
+  --fs-h3:1.3rem;
+  --fs-lead:1.1875rem;     /* section intros and hero sub-copy */
+  --fs-body:1.0625rem;     /* running prose */
+  --fs-sm:.9375rem;        /* card and table copy */
+  --fs-ctrl:.9rem;         /* buttons and menu items — a control is not prose */
+  --fs-xs:.8125rem;        /* nav links, hints */
+  --fs-label:.75rem;       /* uppercase metadata */
+
+  /* Weight roles. The gap that carries hierarchy is 300 against 700; the
+     middle steps are for controls, not for prose. */
+  --fw-light:300;
+  --fw-body:400;
+  --fw-med:500;
+  --fw-semi:600;
+  --fw-bold:700;
+
   /* Rhythm */
   --wrap:1160px;
   --wrap-nav:1340px;
@@ -61,3 +84,7 @@ html[lang|="zh"]{
 /* CJK takes no synthetic italic and no negative tracking — both look broken. */
 html[lang|="zh"] h1,html[lang|="zh"] h2,html[lang|="zh"] h3{letter-spacing:0}
 html[lang|="zh"] i,html[lang|="zh"] em{font-style:normal;font-weight:600}
+/* Plex Sans Thai ships no italic either. Left alone the browser shears the
+   upright, which throws the above-vowels and tone marks off their stems.
+   Emphasis in Thai is weight, the same answer as Chinese. */
+html[lang|="th"] i,html[lang|="th"] em{font-style:normal;font-weight:600}

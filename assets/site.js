@@ -387,3 +387,196 @@ var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)')
     });
   } catch (e) {}
 })();
+
+/* ------------------------------------------------------------
+   Language toggle — one control, not three links
+   ------------------------------------------------------------
+   Three side-by-side links read as clutter in a bar that is already
+   tight, and they grow and shrink with the script: "EN", "ไทย" and
+   "中文" are three different widths. The button is fixed-width in CSS
+   so the bar's geometry is identical in every language; only the
+   label inside it changes.
+
+   No JS means no dropdown, so the button falls back to nothing —
+   which is why the drawer keeps three real links at every width.
+   ------------------------------------------------------------ */
+(function () {
+  try {
+    var wrap = document.getElementById('langSwitch');
+    var btn  = document.getElementById('langBtn');
+    var menu = document.getElementById('langMenu');
+    if (!wrap || !btn || !menu) return;
+
+    var items = [].slice.call(menu.querySelectorAll('a'));
+    var open  = false;
+
+    function setOpen(next, focusIndex) {
+      if (next === open) return;
+      open = next;
+      btn.setAttribute('aria-expanded', String(open));
+      menu.hidden = !open;
+      if (open && typeof focusIndex === 'number' && items[focusIndex]) items[focusIndex].focus();
+      if (!open) btn.focus();
+    }
+
+    btn.addEventListener('click', function () { setOpen(!open); });
+
+    // Keyboard opens onto an item, because a menu you have to arrow into
+    // twice is a menu that feels broken.
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        if (!open) { e.preventDefault(); setOpen(true, 0); }
+      } else if (e.key === 'ArrowUp') {
+        if (!open) { e.preventDefault(); setOpen(true, items.length - 1); }
+      }
+    });
+
+    menu.addEventListener('keydown', function (e) {
+      var i = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown')      { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+      else if (e.key === 'ArrowUp')   { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+      else if (e.key === 'Home')      { e.preventDefault(); items[0].focus(); }
+      else if (e.key === 'End')       { e.preventDefault(); items[items.length - 1].focus(); }
+      else if (e.key === 'Escape')    { e.preventDefault(); setOpen(false); }
+      else if (e.key === 'Tab')       { setOpen(false); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && open) setOpen(false);
+    });
+
+    // pointerdown, not click: closing on click would fire after the press
+    // feedback of whatever was pressed, which reads as a lag.
+    document.addEventListener('pointerdown', function (e) {
+      if (open && !wrap.contains(e.target)) setOpen(false);
+    });
+  } catch (e) {}
+})();
+
+/* ------------------------------------------------------------
+   Press — acknowledge on pointer-down, everywhere, every input
+   ------------------------------------------------------------
+   One delegated listener rather than a class on every control, so a
+   new button added later is covered without anybody remembering to
+   opt it in. Cancels if the finger travels: a press the user slid
+   away from was not a press.
+   ------------------------------------------------------------ */
+(function () {
+  try {
+    var SEL = 'a[href],button,.btn,.fcard,[role="button"],summary,label.opt';
+    var THRESHOLD = 10;          // matches the drawer's drag threshold
+    var el = null, sx = 0, sy = 0;
+
+    function release() {
+      if (el) { el.removeAttribute('data-pressed'); el = null; }
+    }
+
+    document.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      var t = e.target.closest ? e.target.closest(SEL) : null;
+      if (!t || t.hasAttribute('data-busy') || t.getAttribute('aria-disabled') === 'true') return;
+      el = t; sx = e.clientX; sy = e.clientY;
+      el.setAttribute('data-pressed', 'true');
+    }, { passive: true });
+
+    document.addEventListener('pointermove', function (e) {
+      if (!el) return;
+      if (Math.abs(e.clientX - sx) > THRESHOLD || Math.abs(e.clientY - sy) > THRESHOLD) release();
+    }, { passive: true });
+
+    ['pointerup', 'pointercancel', 'blur', 'contextmenu'].forEach(function (ev) {
+      document.addEventListener(ev, release, { passive: true });
+    });
+    // A press that survives a scroll would stay stuck lit behind the content.
+    window.addEventListener('scroll', release, { passive: true });
+  } catch (e) {}
+})();
+
+/* ------------------------------------------------------------
+   Navigation progress — status only when there is actually a wait
+   ------------------------------------------------------------
+   These are real page loads, not a single-page app, so a slow
+   connection gives no sign anything happened between the tap and the
+   new page painting. The bar waits 150ms before showing: below that
+   the page has effectively already arrived and a flash of progress
+   is just noise.
+   ------------------------------------------------------------ */
+(function () {
+  try {
+    var bar = document.createElement('div');
+    bar.className = 'navprog';
+    bar.setAttribute('aria-hidden', 'true');
+    document.addEventListener('DOMContentLoaded', function () { document.body.appendChild(bar); });
+
+    var timer = null, creep = null;
+
+    function start() {
+      if (timer) return;
+      timer = setTimeout(function () {
+        var p = 0.12;
+        bar.dataset.on = 'true';
+        bar.style.transform = 'scaleX(' + p + ')';
+        // Creeps toward, never reaches, the end. Arriving at 100% before the
+        // page does would be a lie about the state.
+        creep = setInterval(function () {
+          p += (0.9 - p) * 0.12;
+          bar.style.transform = 'scaleX(' + p + ')';
+        }, 260);
+      }, 150);
+    }
+
+    function stop() {
+      clearTimeout(timer); clearInterval(creep); timer = creep = null;
+      bar.style.transform = 'scaleX(1)';
+      setTimeout(function () { bar.dataset.on = 'false'; bar.style.transform = 'scaleX(0)'; }, 220);
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#' || /^(mailto|tel|https?:)/i.test(href)) return;
+      start();
+    });
+
+    // Back/forward out of the bfcache leaves the bar mid-creep otherwise.
+    window.addEventListener('pageshow', stop);
+    window.addEventListener('pagehide', function () { clearTimeout(timer); clearInterval(creep); });
+  } catch (e) {}
+})();
+
+/* ------------------------------------------------------------
+   Submit — one busy state, one status line, no double sends
+   ------------------------------------------------------------
+   The form module above validates. This one owns what happens after
+   validation passes: the button goes busy on the same frame as the
+   submit, and the status line says what is happening in words, because
+   a spinner alone does not tell a screen reader anything.
+   ------------------------------------------------------------ */
+(function () {
+  try {
+    document.querySelectorAll('form').forEach(function (form) {
+      var btn = form.querySelector('[type="submit"],button:not([type="button"])');
+      if (!btn) return;
+
+      var status = form.querySelector('.status');
+      if (!status) {
+        status = document.createElement('p');
+        status.className = 'status';
+        status.setAttribute('role', 'status');       // announced without stealing focus
+        status.setAttribute('aria-live', 'polite');
+        btn.parentNode.insertBefore(status, btn.nextSibling);
+      }
+
+      form.addEventListener('submit', function (e) {
+        // The validating module runs first and calls preventDefault on failure.
+        if (e.defaultPrevented) return;
+        if (btn.dataset.busy === 'true') { e.preventDefault(); return; }
+        btn.dataset.busy = 'true';
+        btn.setAttribute('aria-busy', 'true');
+        status.dataset.state = 'busy';
+        status.textContent = form.dataset.busyText || '';
+      });
+    });
+  } catch (e) {}
+})();

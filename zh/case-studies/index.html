@@ -47,12 +47,26 @@
       <li><a href="../../zh/case-studies/index.html">客户案例</a></li>
       <li><a href="../../zh/contact/index.html">联系我们</a></li>
     </ul>
-    <div class="nav__lang">
-      <a href="../../case-studies/index.html" hreflang="en" aria-current="false">EN</a>
-      <a href="../../th/case-studies/index.html" hreflang="th" aria-current="false">ไทย</a>
-      <a href="../../zh/case-studies/index.html" hreflang="zh-Hans" aria-current="true">中文</a>
+    <!-- One cluster, one margin-left:auto. The links above now sit against the
+         brand and all the slack collects here, between the two groups, instead
+         of as dead space after the wordmark. -->
+    <div class="nav__util">
+      <div class="nav__lang" id="langSwitch">
+        <button class="langbtn" id="langBtn" aria-expanded="false" aria-controls="langMenu" aria-label="切换语言">
+          <svg class="langbtn__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+          <span class="langbtn__cur">中文</span>
+          <svg class="langbtn__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <!-- All three names are literal, not content keys: every build offers
+             every language, whichever one is currently active. -->
+        <ul class="langmenu" id="langMenu" hidden>
+          <li><a href="../../case-studies/index.html" hreflang="en" aria-current="false" lang="en">English</a></li>
+          <li><a href="../../th/case-studies/index.html" hreflang="th" aria-current="false" lang="th">ไทย</a></li>
+          <li><a href="../../zh/case-studies/index.html" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">中文</a></li>
+        </ul>
+      </div>
+      <a class="nav__cta" href="../../zh/contact/index.html">免费咨询</a>
     </div>
-    <a class="nav__cta" href="../../zh/contact/index.html">免费咨询</a>
     <button class="menu-btn" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="drawer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -72,10 +86,17 @@
   <a href="../../zh/case-studies/index.html">客户案例</a>
   <a href="../../zh/contact/index.html">联系我们</a>
   <a class="btn btn--primary on-light" href="../../zh/contact/index.html">预约免费咨询</a>
+  <!-- Three tap targets, not a second disclosure. The drawer is already an open
+       menu; nesting a dropdown inside it would add a tap to reach the same three
+       links. The globe and label carry the same meaning the header toggle does. -->
+  <p class="drawer__langlabel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+    切换语言
+  </p>
   <div class="drawer__lang">
-    <a href="../../case-studies/index.html" hreflang="en" aria-current="false">EN</a>
-    <a href="../../th/case-studies/index.html" hreflang="th" aria-current="false">ไทย</a>
-    <a href="../../zh/case-studies/index.html" hreflang="zh-Hans" aria-current="true">中文</a>
+    <a href="../../case-studies/index.html" hreflang="en" aria-current="false" lang="en">English</a>
+    <a href="../../th/case-studies/index.html" hreflang="th" aria-current="false" lang="th">ไทย</a>
+    <a href="../../zh/case-studies/index.html" hreflang="zh-Hans" aria-current="true" lang="zh-Hans">中文</a>
   </div>
 </aside>
 
@@ -85,7 +106,7 @@
   <section class="hero hero--stage">
     <div class="wrap hero__in">
       <h1>我们服务过的家庭</h1>
-      <p class="hero__lead">待补充文案</p>
+      <p class="hero__lead"><i class="todo">待补充文案</i></p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="../../zh/contact/index.html">预约免费咨询</a>
       </div>
@@ -109,17 +130,17 @@
       <article class="story">
         <div class="story__ph">家庭照片
 （待提供）</div>
-        <div><h3>待补充文案</h3><p>待补充文案</p></div>
+        <div><h3><i class="todo">待补充文案</i></h3><p><i class="todo">待补充文案</i></p></div>
       </article>
       <article class="story story--flip">
-        <div><h3>待补充文案</h3><p>待补充文案</p></div>
+        <div><h3><i class="todo">待补充文案</i></h3><p><i class="todo">待补充文案</i></p></div>
         <div class="story__ph">家庭照片
 （待提供）</div>
       </article>
       <article class="story">
         <div class="story__ph">家庭照片
 （待提供）</div>
-        <div><h3>待补充文案</h3><p>待补充文案</p></div>
+        <div><h3><i class="todo">待补充文案</i></h3><p><i class="todo">待补充文案</i></p></div>
       </article>
     </div>
   </section>
@@ -129,12 +150,12 @@
     <div class="wrap">
       <div class="sec-hd"><h2>他们这样说</h2></div>
       <div class="quotes">
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
-        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p>待补充文案</p><cite>待补充文案</cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
+        <figure class="quote"><span class="mark" aria-hidden="true">&ldquo;</span><p><i class="todo">待补充文案</i></p><cite><i class="todo">待补充文案</i></cite></figure>
       </div>
     </div>
   </section>
@@ -152,13 +173,13 @@
   <!-- 5 · Instagram -->
   <section class="section section--tint">
     <div class="wrap">
-      <div class="sec-hd"><h2>待补充文案</h2></div>
+      <div class="sec-hd"><h2><i class="todo">待补充文案</i></h2></div>
       <!-- PLACEHOLDER: Instagram Reels embed. -->
       <div class="ig-row">
-        <div class="ig-ph">待补充文案</div>
-        <div class="ig-ph">待补充文案</div>
-        <div class="ig-ph">待补充文案</div>
-        <div class="ig-ph">待补充文案</div>
+        <div class="ig-ph"><i class="todo">待补充文案</i></div>
+        <div class="ig-ph"><i class="todo">待补充文案</i></div>
+        <div class="ig-ph"><i class="todo">待补充文案</i></div>
+        <div class="ig-ph"><i class="todo">待补充文案</i></div>
       </div>
     </div>
   </section>
@@ -168,10 +189,10 @@
     <div class="wrap">
       <div class="sec-hd"><h2>数字一览</h2></div>
       <div class="stats">
-        <div class="stat"><b>待补充文案</b><span>待补充文案</span></div>
-        <div class="stat"><b>待补充文案</b><span>待补充文案</span></div>
-        <div class="stat"><b>待补充文案</b><span>待补充文案</span></div>
-        <div class="stat"><b>待补充文案</b><span>待补充文案</span></div>
+        <div class="stat"><b><i class="todo">待补充文案</i></b><span><i class="todo">待补充文案</i></span></div>
+        <div class="stat"><b><i class="todo">待补充文案</i></b><span><i class="todo">待补充文案</i></span></div>
+        <div class="stat"><b><i class="todo">待补充文案</i></b><span><i class="todo">待补充文案</i></span></div>
+        <div class="stat"><b><i class="todo">待补充文案</i></b><span><i class="todo">待补充文案</i></span></div>
       </div>
     </div>
   </section>
@@ -179,7 +200,7 @@
   <!-- 7 · Closing -->
   <section class="close">
     <div class="wrap close__in">
-      <div><h2>开启您的旅程</h2><p>待补充文案</p></div>
+      <div><h2>开启您的旅程</h2><p><i class="todo">待补充文案</i></p></div>
       <a class="btn btn--primary on-light" href="../../zh/contact/index.html">预约免费咨询</a>
     </div>
   </section>
@@ -187,9 +208,19 @@
 
 </main>
 <footer class="foot">
-  <div class="wrap">
-    <span><b>Start Right Up</b> · 待补充文案</span>
-    <span>enquiry@startrightup.com</span>
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <span><b>Start Right Up</b></span>
+      <span class="foot__tag"><i class="todo">待补充文案</i></span>
+    </div>
+    <!-- T&C and FAQ live here, agreed 27/09. The footer is the conventional
+         place to find them and it costs no room in a bar that has none. -->
+    <nav class="foot__links" aria-label="网站信息">
+      <a href="../../zh/faq/index.html">常见问题</a>
+      <a href="../../zh/news/index.html">新闻与文章</a>
+      <a href="../../zh/terms/index.html">条款与细则</a>
+    </nav>
+    <span class="foot__mail">enquiry@startrightup.com</span>
   </div>
 </footer>
 
