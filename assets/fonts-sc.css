@@ -1,0 +1,21 @@
+/* ============================================================
+   Simplified Chinese face — /zh/ routes only.
+   ------------------------------------------------------------
+   PLACEHOLDER. IBM Plex Sans SC is self-hosted and subset rather
+   than loaded from a CDN: a full CJK face runs to several megabytes
+   and must never reach a Thai visitor on mobile data (internal-spec.md §3).
+
+   To finish this file:
+     1. Download IBM Plex Sans SC (weights 300/400/600).
+     2. Subset to the glyphs the Chinese content actually uses
+        (pyftsubset --text-file=, or a build step over content/*.json).
+     3. Emit woff2 per weight into src/assets/fonts/ and declare
+        @font-face below with font-display:swap and unicode-range.
+
+   Until then /zh/ falls back to the system CJK stack, which renders
+   correctly but is not the approved face. Noto Sans SC on the Google
+   CDN is the agreed fallback programme if Plex SC causes trouble.
+   ============================================================ */
+
+/* The Latin face still loads on /zh/ — headings mix Latin brand names. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
